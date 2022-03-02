@@ -11,8 +11,6 @@ public class PrimeiraClasseJava {
 		Aluno aluno2 = new Aluno("João");
 		
 		Aluno aluno3 = new Aluno("Maria", 20);
-		
-		System.err.println("Olá, Mundo!!!");
 
 	}
 
