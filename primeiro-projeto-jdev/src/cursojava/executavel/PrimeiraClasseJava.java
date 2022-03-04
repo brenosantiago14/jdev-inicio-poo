@@ -1,39 +1,39 @@
 package cursojava.executavel;
 
+import javax.swing.JOptionPane;
+
 import cursojava.classes.Aluno;
 
 public class PrimeiraClasseJava {
 
 	public static void main(String[] args) {
 		
-		
-		Aluno aluno1 = new Aluno();
-		aluno1.setNome("João");
-		aluno1.setDataMatricula("01/01/2022");
-		aluno1.setDataNascimento("01/01/2012");
-		
-		System.out.println("Nome: "+aluno1.getNome()+ "\nData Matrícula: "+ aluno1.getDataMatricula()+ "\nData Nascimento: "+ aluno1.getDataNascimento());
-		System.out.println();
-		
-		Aluno aluno2 = new Aluno();
-		aluno2.setNome("Maria");
-		aluno2.setNomeEscola("Colégio Brasil");
-		aluno2.setNomeMae("Antônia");
-		
-		System.out.println("Nome: "+ aluno2.getNome()+ "\nNome Escola: "+aluno2.getNomeEscola()+ "\nNome Mãe: "+ aluno2.getNomeMae());
-		System.out.println();
+		String nome = JOptionPane.showInputDialog("Qual o nome do(a) aluno(a)?");
+		String idade = JOptionPane.showInputDialog("Qual a idade?");
+		String nascimento = JOptionPane.showInputDialog("Data de nascimento?");
+		String nomePai = JOptionPane.showInputDialog("Nome do pai?");
+		String nomeMae = JOptionPane.showInputDialog("Nome da mãe?");
+		String serieMatriculado = JOptionPane.showInputDialog("Série matriculado(a)");
+		String escola = JOptionPane.showInputDialog("Nome da escola?");
+		String nota1 = JOptionPane.showInputDialog("Nota 1?");
+		String nota2 = JOptionPane.showInputDialog("Nota 21?");
+		String nota3 = JOptionPane.showInputDialog("Nota 3?");
+		String nota4 = JOptionPane.showInputDialog("Nota 4?");
 		
 		Aluno aluno3 = new Aluno();
-		aluno3.setNome("Rafaela");
-		aluno3.setIdade(10);
-		aluno3.setNomePai("José");
-		aluno3.setNomeMae("Maria");
-		aluno3.setNota1(7.1);
-		aluno3.setNota2(4.9);
-		aluno3.setNota3(8.9);
-		aluno3.setNota4(9);
+		aluno3.setNome(nome);
+		aluno3.setIdade(Integer.valueOf(idade));
+		aluno3.setDataNascimento(nascimento);
+		aluno3.setNomePai(nomePai);
+		aluno3.setNomeMae(nomeMae);
+		aluno3.setSerieMatriculado(serieMatriculado);
+		aluno3.setNomeEscola(escola);
+		aluno3.setNota1(Double.parseDouble(nota1));
+		aluno3.setNota2(Double.parseDouble(nota2));
+		aluno3.setNota3(Double.parseDouble(nota3));
+		aluno3.setNota4(Double.parseDouble(nota4));
 		
-		System.out.println("O(a) aluno(a) " + aluno3.getNome() + ", filho(a) de " + aluno3.getNomePai() + " e de " + aluno3.getNomeMae() + ", teve média de " + aluno3.getMediaNota() + " e está " + (aluno3.getAlunoAprovado() ? "Aprovado" : "Reprovado"));
+		System.out.println("O(a) aluno(a) " + aluno3.getNome() + ", nascido em " + aluno3.getDataNascimento() + ", com " + aluno3.getIdade() + " anos de idade, " + "filho(a) de " + aluno3.getNomePai() + " e de " + aluno3.getNomeMae() + ", matriculado na " + aluno3.getSerieMatriculado() + " série\nna escola " + aluno3.getNomeEscola() + ", teve média de " + aluno3.getMediaNota() + " e está " + (aluno3.getAlunoAprovado() ? "Aprovado!" : "Reprovado!"));
 		
 	}
 
