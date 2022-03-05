@@ -1,5 +1,7 @@
 package cursojava.classes;
 
+import java.util.Objects;
+
 public class Aluno {
 	private String nome;
 	private int idade;
@@ -148,6 +150,7 @@ public class Aluno {
 		return (nota1 + nota2 + nota3 + nota4) /4;
 	}
 	
+	/* Método boolean para retornar true caso esteja aprovado e false reprovado */
 	public boolean getAlunoAprovado() {
 		double media = this.getMediaNota();
 		if (media >= 7) {
@@ -156,5 +159,44 @@ public class Aluno {
 			return false;
 		}
 	}
+	
+	/* Método string para retornar Aprovado! caso esteja aprovado e Reprovado! reprovado */
+	public String getAlunoAprovado2() {
+		double media = this.getMediaNota();
+		if (media >= 7) {
+			return "Aprovado!";
+		}else {
+			return "Reprovado!";
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return "Aluno [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
+				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
+				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
+				+ serieMatriculado + ", nota1=" + nota1 + ", nota2=" + nota2 + ", nota3=" + nota3 + ", nota4=" + nota4
+				+ "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nome);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aluno other = (Aluno) obj;
+		return Objects.equals(nome, other.nome);
+	}
+	
+	
+	
 	
 }
