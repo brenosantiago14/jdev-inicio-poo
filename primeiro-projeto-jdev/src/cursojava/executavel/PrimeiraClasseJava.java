@@ -37,15 +37,9 @@ public class PrimeiraClasseJava {
 		 aluno3.setNomeMae(nomeMae);
 		 aluno3.setSerieMatriculado(serieMatriculado);
 		 aluno3.setNomeEscola(escola);
-		 aluno3.getDisciplina().setNota1(Double.parseDouble(nota1));
-		 aluno3.getDisciplina().setNota2(Double.parseDouble(nota2));
-		 aluno3.getDisciplina().setNota3(Double.parseDouble(nota3));
-		 aluno3.getDisciplina().setNota4(Double.parseDouble(nota4));
 		 
-		 aluno3.getDisciplina().setDisciplina1(disciplina1);
-		 aluno3.getDisciplina().setDisciplina2(disciplina2);
-		 aluno3.getDisciplina().setDisciplina3(disciplina3);
-		 aluno3.getDisciplina().setDisciplina4(disciplina4);
+		 
+		 
 		 
 		
 		 /*
