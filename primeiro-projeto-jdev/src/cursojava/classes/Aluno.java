@@ -16,8 +16,8 @@ public class Aluno {
 	private String nomeEscola;
 	private String serieMatriculado;
 
-	private List <Disciplina> disciplinas = new ArrayList<Disciplina>();
-	
+	private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
@@ -26,35 +26,35 @@ public class Aluno {
 		this.disciplinas = disciplinas;
 	}
 
-	public Aluno () {
-		
+	public Aluno() {
+
 	}
-	
-	public Aluno (String nomePadrao) {
+
+	public Aluno(String nomePadrao) {
 		nome = nomePadrao;
 	}
-	
-	public Aluno (String nomePadrao, int idadePadrao) {
+
+	public Aluno(String nomePadrao, int idadePadrao) {
 		nome = nomePadrao;
 		idade = idadePadrao;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
-	
+
 	public int getIdade() {
 		return idade;
 	}
-	
+
 	public String getDataNascimento() {
 		return dataNascimento;
 	}
@@ -119,41 +119,46 @@ public class Aluno {
 		this.serieMatriculado = serieMatriculado;
 	}
 
-	
-
 	/* Método pra retornar média da nota do aluno */
 	public double getMediaNota() {
-		
+
 		double somaNotas = 0.0;
-		
+
 		for (Disciplina disciplina : disciplinas) {
 			somaNotas += disciplina.getNota();
 		}
-		
-		
+
 		return somaNotas / disciplinas.size();
 	}
-	
+
 	/* Método boolean para retornar true caso esteja aprovado e false reprovado */
 	public boolean getAlunoAprovado() {
 		double media = this.getMediaNota();
 		if (media >= 7) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
-	
-	/* Método string para retornar Aprovado! caso esteja aprovado e Reprovado! reprovado */
+
+	/*
+	 * Método string para retornar Aprovado! caso esteja aprovado e Reprovado!
+	 * reprovado
+	 */
 	public String getAlunoAprovado2() {
 		double media = this.getMediaNota();
-		if (media >= 7) {
-			return "Aprovado!";
-		}else {
-			return "Reprovado!";
+
+		if (media >= 5) {
+			if (media >= 7) {
+				return "Aluno aprovado";
+			} else {
+				return "Aluno em recuperação";
+			}
+		} else {
+			return "Aluno reprovado";
 		}
+
 	}
-	
 
 	@Override
 	public int hashCode() {
@@ -179,8 +184,5 @@ public class Aluno {
 				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
 				+ serieMatriculado + "]";
 	}
-	
-	
-	
-	
+
 }
