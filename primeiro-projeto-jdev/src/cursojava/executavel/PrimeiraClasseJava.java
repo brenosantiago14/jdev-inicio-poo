@@ -1,5 +1,8 @@
 package cursojava.executavel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import cursojava.classes.Aluno;
@@ -9,62 +12,93 @@ public class PrimeiraClasseJava {
 
 	public static void main(String[] args) {
 
-		String nome = JOptionPane.showInputDialog("Qual o nome do(a) aluno(a)?");
-		String idade = JOptionPane.showInputDialog("Qual a idade?");
-		String nascimento = JOptionPane.showInputDialog("Data de nascimento?");
-		String rg = JOptionPane.showInputDialog("RG?");
-		String cpf = JOptionPane.showInputDialog("CPF?");
-		String nomePai = JOptionPane.showInputDialog("Nome do pai?");
-		String nomeMae = JOptionPane.showInputDialog("Nome da mãe?");
-		String serieMatriculado = JOptionPane.showInputDialog("Série matriculado(a)");
-		String escola = JOptionPane.showInputDialog("Nome da escola?");
+		List<Aluno> alunos = new ArrayList<Aluno>();
 
-		Aluno aluno1 = new Aluno();
-		aluno1.setNome(nome);
-		aluno1.setIdade(Integer.valueOf(idade));
-		aluno1.setDataNascimento(nascimento);
-		aluno1.setRegistroGeral(rg);
-		aluno1.setNumeroCpf(cpf);
-		aluno1.setNomePai(nomePai);
-		aluno1.setNomeMae(nomeMae);
-		aluno1.setSerieMatriculado(serieMatriculado);
-		aluno1.setNomeEscola(escola);
+		for (int qtdAluno = 1; qtdAluno <= 2; qtdAluno++) {
 
-		
-		for (int pos = 1; pos <= 4; pos++) {
-			String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina " +pos+ " ?");
-			String notaDisciplina = JOptionPane.showInputDialog("Nota da disciplina "+pos+" ?");
-			
-			Disciplina disciplina = new Disciplina();
-			disciplina.setDisciplina(nomeDisciplina);
-			disciplina.setNota(Double.valueOf(notaDisciplina));
-			
-			aluno1.getDisciplinas().add(disciplina);
-			
+			String nome = JOptionPane.showInputDialog("Qual o nome do(a) aluno(a) " + qtdAluno + "?");
+			/*
+			String idade = JOptionPane.showInputDialog("Idade?");
+			String nascimento = JOptionPane.showInputDialog("Data de nascimento?");
+			String rg = JOptionPane.showInputDialog("RG?");
+			String cpf = JOptionPane.showInputDialog("CPF?");
+			String nomePai = JOptionPane.showInputDialog("Nome do pai?");
+			String nomeMae = JOptionPane.showInputDialog("Nome da mãe?");
+			String serieMatriculado = JOptionPane.showInputDialog("Série matriculado(a)");
+			String dataMatricula = JOptionPane.showInputDialog("Data Matricula");
+			String escola = JOptionPane.showInputDialog("Nome da escola?");
+			*/
+
+			Aluno aluno1 = new Aluno();
+			aluno1.setNome(nome);
+			/*
+			aluno1.setIdade(Integer.valueOf(idade));
+			aluno1.setDataNascimento(nascimento);
+			aluno1.setRegistroGeral(rg);
+			aluno1.setNumeroCpf(cpf);
+			aluno1.setNomePai(nomePai);
+			aluno1.setNomeMae(nomeMae);
+			aluno1.setSerieMatriculado(serieMatriculado);
+			aluno1.setNomeEscola(escola);
+			aluno1.setDataMatricula(dataMatricula);
+			*/
+
+			for (int pos = 1; pos <= 4; pos++) {
+				String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina " + pos + " ?");
+				String notaDisciplina = JOptionPane.showInputDialog("Nota da disciplina " + pos + " ?");
+
+				Disciplina disciplina = new Disciplina();
+				disciplina.setDisciplina(nomeDisciplina);
+				disciplina.setNota(Double.valueOf(notaDisciplina));
+
+				aluno1.getDisciplinas().add(disciplina);
+
+			}
+
+			int escolha = JOptionPane.showConfirmDialog(null, "Deseja remover alguma disciplina?");
+
+			if (escolha == 0) { /* o 0 é SIM */
+
+				int continuarRemover = 0;
+
+				int posicao = 1;
+
+				while (continuarRemover == 0) {
+
+					String disciplinaRemover = JOptionPane.showInputDialog("Qual a disciplina? [1] [2] [3] [4]");
+					aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue() - posicao);
+					posicao++;
+					continuarRemover = JOptionPane.showConfirmDialog(null, "Continuar removendo disciplinas?");
+				}
+			}
+
+			alunos.add(aluno1);
+
 		}
 
-		
-		int escolha = JOptionPane.showConfirmDialog(null, "Deseja remover alguma disciplina?");
-		
-		if(escolha == 0) {
-			String disciplinaRemover = JOptionPane.showInputDialog("Qual a disciplina? [1] [2] [3] [4]");
-			aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue() - 1);
+		for (Aluno aluno : alunos) {
+
+			if (aluno.getNome().equalsIgnoreCase("Breno")) {
+				alunos.remove(aluno);
+				break;
+			}else {
+				System.out.println(aluno);
+				System.out.println("O aluno teve média: " + aluno.getMediaNota());
+				System.out.println(aluno.getAlunoAprovado2());
+				System.out.println("-----------------------------------------------------------------------------");
+			}
 		}
 		
 		
-		/*
-		 * System.out.println("O(a) aluno(a) " + aluno3.getNome() + ", nascido em " +
-		 * aluno3.getDataNascimento() + ", com " + aluno3.getIdade() +
-		 * " anos de idade, " + "filho(a) de " + aluno3.getNomePai() + " e de " +
-		 * aluno3.getNomeMae() + ", matriculado na " + aluno3.getSerieMatriculado() +
-		 * " série\nna escola " + aluno3.getNomeEscola() + ", teve média de " +
-		 * aluno3.getMediaNota() + " e está " + (aluno3.getAlunoAprovado() ? "Aprovado!"
-		 * : "Reprovado!"));
-		 */
-
-		System.out.println(aluno1.toString());
-		System.out.println("O aluno teve média: " + aluno1.getMediaNota());
-		System.out.println("Está " + aluno1.getAlunoAprovado2());
+		for (Aluno aluno : alunos) {
+			System.out.println("Alunos que sobraram na lista:");
+			System.out.println(aluno.getNome());
+			System.out.println("Suas matérias são:");
+			
+			for (Disciplina disciplina : aluno.getDisciplinas()) {
+				System.out.println(disciplina.getDisciplina());
+			}
+		}
 
 		/* EQUALS E HASHCODE ENTRE OBJETOS!!!!! */
 		/*

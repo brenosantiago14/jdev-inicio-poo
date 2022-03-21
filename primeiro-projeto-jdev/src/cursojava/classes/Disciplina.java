@@ -24,11 +24,14 @@ public class Disciplina {
 		this.disciplina = disciplina;
 	}
 
+
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(disciplina, nota);
 	}
 
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -46,5 +49,6 @@ public class Disciplina {
 	public String toString() {
 		return "Disciplina [nota=" + nota + ", disciplina=" + disciplina + "]";
 	}
+	
 
 }
